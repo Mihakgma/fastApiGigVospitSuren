@@ -3,9 +3,14 @@ from fastapi import FastAPI
 from loguru import logger
 
 from api import router as api_router
+from core.config import settings
 
 app = FastAPI()
-app.include_router(api_router)
+app.include_router(
+    api_router,
+    prefix=settings.api.prefix
+    )
+
 
 @app.get("/")
 async def root():
@@ -19,4 +24,4 @@ async def say_hello(name: str):
 
 if __name__ == "__main__":
     logger.info("Starting server...")
-    uvicorn.run("main:app", port=8000, reload=True, log_level="critical")
+    uvicorn.run("main:app", reload=True, log_level="critical")
