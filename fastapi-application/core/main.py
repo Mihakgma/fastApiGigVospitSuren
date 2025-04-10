@@ -17,4 +17,4 @@ async def say_hello(name: str):
 
 if __name__ == "__main__":
     logger.info("Starting server...")
-    uvicorn.run(app, port=8000, reload=True, log_level="critical")
+    uvicorn.run("main:app", port=8000, reload=True, log_level="critical")
