@@ -9,7 +9,7 @@ app = FastAPI()
 app.include_router(
     api_router,
     prefix=settings.api.prefix
-    )
+)
 
 
 @app.get("/")
@@ -24,4 +24,8 @@ async def say_hello(name: str):
 
 if __name__ == "__main__":
     logger.info("Starting server...")
-    uvicorn.run("main:app", reload=True, log_level="critical")
+    uvicorn.run(app="main:app",
+                host=settings.run.host,
+                port=settings.run.port,
+                reload=True,
+                log_level="critical")
