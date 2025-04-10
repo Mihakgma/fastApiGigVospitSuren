@@ -1,4 +1,6 @@
+import uvicorn
 from fastapi import FastAPI
+from loguru import logger
 
 app = FastAPI()
 
@@ -11,3 +13,8 @@ async def root():
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
+
+
+if __name__ == "__main__":
+    logger.info("Starting server...")
+    uvicorn.run(app, port=8000, reload=True, log_level="critical")
