@@ -14,7 +14,7 @@ app.include_router(
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Вас приветствует приложение "}
 
 
 @app.get("/hello/{name}")
@@ -24,7 +24,7 @@ async def say_hello(name: str):
 
 if __name__ == "__main__":
     logger.info("Starting server...")
-    uvicorn.run(app="main:app",
+    uvicorn.run("main:app",
                 host=settings.run.host,
                 port=settings.run.port,
                 reload=True,
