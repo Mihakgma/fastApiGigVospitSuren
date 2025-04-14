@@ -21,9 +21,9 @@ class DatabaseConfig(BaseModel):
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(".env", ".env.template"),
         case_sensitive=False,
-        env_nested_delimiter="__",
+        env_nested_delimiter="__",  # for example className__objAttrName etc for models!
         env_prefix="APP_CONFIG__"
     )
     run: RunConfig = RunConfig()
